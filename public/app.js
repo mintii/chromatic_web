@@ -4,19 +4,12 @@ const sendBtn    = document.getElementById("send-btn");
 const summaryEl  = document.getElementById("summary-content");
 const newSessionBtn = document.getElementById("new-session-btn");
 
-function linkify(text) {
-  return text.replace(
-    /(https?:\/\/[^\s<>"')\]]+)/g,
-    '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
-  );
-}
-
 function appendMessage(role, text) {
   const div = document.createElement("div");
   div.className = `message ${role}`;
   const bubble = document.createElement("div");
   bubble.className = "bubble";
-  bubble.innerHTML = linkify(text);
+  bubble.innerHTML = text;
   div.appendChild(bubble);
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;

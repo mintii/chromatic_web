@@ -1,7 +1,17 @@
 require "sinatra"
 require "json"
+require "redcarpet"
 require "dotenv/load"
 require_relative "../ruby_chromatic_agent/agent"
+
+MARKDOWN = Redcarpet::Markdown.new(
+  Redcarpet::Render::HTML.new(link_attributes: { target: "_blank", rel: "noopener noreferrer" }),
+  autolink: true,
+  tables: true,
+  fenced_code_blocks: true,
+  strikethrough: true,
+  no_intra_emphasis: true
+)
 
 $agent = ChromaticAgent.new
 
@@ -19,7 +29,7 @@ post "/chat" do
   message = body["message"].to_s.strip
   halt 400, { error: "Message cannot be empty." }.to_json if message.empty?
 
-  response = $agent.chat(message)
+  response = MARKDOWN.render($agent.chat(message))
   { response: response, summary: SESSION.summary }.to_json
 rescue => e
   status 500
