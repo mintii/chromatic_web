@@ -121,6 +121,14 @@ body {
   font-size: 0.82em;
 }
 
+.bubble img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.4rem;
+  margin: 0.4em 0;
+  display: block;
+}
+
 .bubble blockquote {
   border-left: 3px solid var(--border);
   margin: 0.4em 0;
