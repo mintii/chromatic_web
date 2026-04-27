@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chromatic Agent</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="layout">
+    <div class="chat-panel">
+      <header class="chat-header">
+        <h1>Chromatic Agent</h1>
+        <button id="new-session-btn" class="btn-secondary">New Session</button>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="message agent">
+          <div class="bubble">Hello! I&#39;m your Chromatic Agent — a creative research companion for watercolor and gouache painters. Ask me about artists, techniques, palettes, or styles.</div>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <textarea id="input" placeholder="Ask about artists, techniques, palettes..." rows="1"></textarea>
+        <button id="send-btn" class="btn-primary">Send</button>
+      </div>
+    </div>
+
+    <aside class="summary-panel">
+      <h2>Session</h2>
+      <pre id="summary-content"><%= SESSION.summary %></pre>
+    </aside>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
