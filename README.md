@@ -28,8 +28,11 @@ The web app has no database. All state lives in memory for the lifetime of the s
 # 1. Install dependencies
 bundle install
 
-# 2. Copy the API key from the agent repo (first-time setup)
-cp ../ruby_chromatic_agent/.env .env
+# 2. Create a `.env` file in the project root:
+
+```
+ANTHROPIC_API_KEY=your_key_here
+TAVILY_API_KEY=your_key_here
 ```
 
 ## Running
