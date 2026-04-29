@@ -15,9 +15,23 @@
       </header>
 
       <div id="messages" class="messages">
-        <div class="message agent">
-          <div class="bubble">Hello! I&#39;m your Chromatic Agent — a creative research companion for watercolor and gouache painters. Ask me about artists, techniques, palettes, or styles.</div>
-        </div>
+        <% if @display_messages.empty? %>
+          <div class="message agent">
+            <div class="bubble">Hello! I&#39;m your Chromatic Agent — a creative research companion for watercolor and gouache painters. Ask me about artists, techniques, palettes, or styles.</div>
+          </div>
+        <% else %>
+          <% @display_messages.each do |msg| %>
+            <% if msg[:role] == "user" %>
+              <div class="message user">
+                <div class="bubble"><%= ERB::Util.h(msg[:text]) %></div>
+              </div>
+            <% else %>
+              <div class="message agent">
+                <div class="bubble"><%= MARKDOWN.render(msg[:text]) %></div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
 
       <div class="input-row">
@@ -29,6 +43,7 @@
     <aside class="summary-panel">
       <h2>Session</h2>
       <pre id="summary-content"><%= SESSION.summary %></pre>
+      <a href="/export" class="btn-secondary export-btn">Download Session</a>
     </aside>
   </div>
 

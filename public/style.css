@@ -243,6 +243,12 @@ textarea:focus {
   gap: 0.75rem;
 }
 
+.export-btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
 .summary-panel h2 {
   font-size: 0.8rem;
   font-weight: 600;
